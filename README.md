@@ -39,7 +39,7 @@ creating an application that an employee can use to generate a random password b
 
 The following image shows the web application's appearance and functionality:
 
-![password generator demo](./assets/05-javascript-challenge-demo.png)
+![password generator demo](./assets/password.png)
 
 ### Technologies Used
 
