@@ -94,12 +94,12 @@ var randomPassword = ''
 // Function to prompt user for password options
 function getPasswordOptions() {
   // if person chooses specialcharacter and number add them to c = ['!', 1]
-  const a = [1, 2, 3];
-  const b = ['d', 'e', 'f'];
-  const e = ['f', 'gge', 'gf'];
-  const c = a.concat(b, e);
+  // const a = [1, 2, 3];
+  // const b = ['d', 'e', 'f'];
+  // const e = ['f', 'gge', 'gf'];
+  // const c = a.concat(b, e);
 
-  console.log(c);
+  // console.log(c);
 
   choiceArr = [];
 
@@ -117,7 +117,7 @@ function getPasswordOptions() {
     choiceArr = choiceArr.concat(upperCasedCharacters)
   }
 
-  console.log(choiceArr)
+
   if ((choiceArr.length === 0) || (choiceArr.length === '')) {
     alert('Please enter one valid character')
     return false
@@ -126,22 +126,19 @@ function getPasswordOptions() {
 // Function for getting a random element from an array
 function getRandom(arr, charactersLength) {
   randomPassword = ''
-  console.log(arr)
   for (var i = 0; i < charactersLength; i++) {
-    console.log(arr[i])
-    console.log(Math.floor(Math.random() * arr.length))
+
     var randomPosition = Math.floor(Math.random() * arr.length)
     randomPassword = randomPassword + choiceArr[randomPosition]
   }
-  console.log(randomPassword)
   return randomPassword
 }
 
 // Function to generate password with user input
 function generatePassword() {
-  console.log("Generating password");
+
   var charactersLength = parseInt(prompt('How many characters would you like your password to contain?'))
-  console.log(charactersLength, 'characters');
+  // console.log(charactersLength, 'characters');
 
   if (charactersLength > 128 || isNaN(charactersLength) || charactersLength < 8) {
     alert('Password length cannot be less than 8 and more than 128 characters and enter a number')
