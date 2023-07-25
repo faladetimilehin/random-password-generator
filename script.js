@@ -93,32 +93,39 @@ var randomPassword = ''
 
 // Function to prompt user for password options
 function getPasswordOptions() {
+  // if person chooses specialcharacter and number add them to c = ['!', 1]
+  const a = [1, 2, 3];
+  const b = ['d', 'e', 'f'];
+  const e = ['f', 'gge', 'gf'];
+  const c = a.concat(b, e);
+
+  console.log(c);
+
   choiceArr = [];
-  var specialCharacter = confirm('Click OK to confirm including special characters');
-  var numericCharacter = confirm('Click OK to confirm including numeric characters');
-  var lowerCasedCharacter = confirm('Click OK to confirm including lowercase characters');
-  var upperCasedCharacter = confirm('Click OK to confirm including uppercase characters');
-  choiceArr = specialCharacter ? choiceArr.concat(specialCharacters) : '';
+
+
+  if (confirm('Click OK to confirm including special characters')) {
+    choiceArr = choiceArr.concat(specialCharacters)
+  }
+  if (confirm('Click OK to confirm including numeric characters')) {
+    choiceArr = choiceArr.concat(numericCharacters)
+  }
+  if (confirm('Click OK to confirm including lowercase characters')) {
+    choiceArr = choiceArr.concat(lowerCasedCharacters)
+  }
+  if (confirm('Click OK to confirm including uppercase characters')) {
+    choiceArr = choiceArr.concat(upperCasedCharacters)
+  }
+
   console.log(choiceArr)
-  choiceArr = numericCharacter ? choiceArr.concat(numericCharacters) : '';
-  console.log(choiceArr)
-  choiceArr = lowerCasedCharacter ? choiceArr.concat(lowerCasedCharacters) : '';
-  console.log(choiceArr)
-  choiceArr = upperCasedCharacter ? choiceArr.concat(upperCasedCharacters) : '';
-  console.log(choiceArr)
-  console.log(`specialCharacter:${specialCharacter}`,
-    `numericCharacter:${numericCharacter}`,
-    `lowerCasedCharacter:${lowerCasedCharacter}`,
-    `upperCasedCharacter:${upperCasedCharacter}`
-  )
-  console.log(choiceArr)
-  if (choiceArr.length < 0) {
+  if ((choiceArr.length === 0) || (choiceArr.length === '')) {
     alert('Please enter one valid character')
+    return false
   }
 }
 // Function for getting a random element from an array
 function getRandom(arr, charactersLength) {
-
+  randomPassword = ''
   console.log(arr)
   for (var i = 0; i < charactersLength; i++) {
     console.log(arr[i])
@@ -132,8 +139,6 @@ function getRandom(arr, charactersLength) {
 
 // Function to generate password with user input
 function generatePassword() {
-
-  var password = ''
   console.log("Generating password");
   var charactersLength = parseInt(prompt('How many characters would you like your password to contain?'))
   console.log(charactersLength, 'characters');
@@ -146,7 +151,6 @@ function generatePassword() {
     getRandom(choiceArr, charactersLength)
     return randomPassword
   }
-
 }
 
 // Get references to the #generate element
@@ -156,7 +160,7 @@ var generateBtn = document.querySelector('#generate');
 function writePassword() {
   var password = generatePassword();
   var passwordText = document.querySelector('#password');
-
+  passwordText.value = '';
   passwordText.value = password;
 }
 
